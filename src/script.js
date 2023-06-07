@@ -1,6 +1,6 @@
 import "./style.css";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "lil-gui";
 import testVertexShader from "./shaders/test/vertex.glsl";
 import testFragmentShader from "./shaders/test/fragment.glsl";
@@ -97,13 +97,13 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0.25, -0.25, 1);
 scene.add(camera);
 
-// Controls
-const controls = new OrbitControls(camera, canvas);
-// controls.enableDamping = true;
-// controls.enableZoom = false;
-// controls.enableRotate = false;
-// controls.enablePan = false;
-controls.enabled= false;
+// // Controls
+// const controls = new OrbitControls(camera, canvas);
+// // controls.enableDamping = true;
+// // controls.enableZoom = false;
+// // controls.enableRotate = false;
+// // controls.enablePan = false;
+// controls.enabled= false;
 
 /**
  * Renderer
