@@ -1,6 +1,6 @@
 import "./style.css";
 import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "lil-gui";
 import testVertexShader from "./shaders/test/vertex.glsl";
 import testFragmentShader from "./shaders/test/fragment.glsl";
@@ -23,7 +23,7 @@ const scene = new THREE.Scene();
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.PlaneBufferGeometry(100, 100, 32, 32);
+const geometry = new THREE.PlaneBufferGeometry(10, 10, 32, 32);
 
 // Material
 const material = new THREE.ShaderMaterial({
@@ -97,13 +97,12 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0.25, -0.25, 1);
 scene.add(camera);
 
-// // Controls
-// const controls = new OrbitControls(camera, canvas);
-// // controls.enableDamping = true;
-// // controls.enableZoom = false;
-// // controls.enableRotate = false;
-// // controls.enablePan = false;
-// controls.enabled= false;
+// Controls
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.enableZoom = false;
+controls.enableRotate = false;
+controls.enablePan = false;
 
 /**
  * Renderer
@@ -121,7 +120,7 @@ const Clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = Clock.getElapsedTime();
   // Update controls
-//   controls.update();
+  controls.update();
   //   update materials
   material.uniforms.u_time.value = elapsedTime;
   // Render
