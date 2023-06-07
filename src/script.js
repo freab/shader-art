@@ -121,7 +121,7 @@ const Clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = Clock.getElapsedTime();
   // Update controls
-  controls.update();
+//   controls.update();
   //   update materials
   material.uniforms.u_time.value = elapsedTime;
   // Render
