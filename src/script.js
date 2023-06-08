@@ -38,6 +38,9 @@ const material = new THREE.ShaderMaterial({
     u_freq: { value: 1.5 },
     u_speed: { value: 0.4 },
     u_clearity: { value: 8.0 },
+    u_patern: { value: 5.0 },
+    u_position: { value: 2.0 },
+    u_miror: { value: 0.5 },
   },
 });
 gui
@@ -53,11 +56,29 @@ gui
   .step(0.01)
   .name("speed");
 gui
+  .add(material.uniforms.u_miror, "value")
+  .min(0)
+  .max(4)
+  .step(0.01)
+  .name("mirors");
+gui
   .add(material.uniforms.u_clearity, "value")
   .min(0)
-  .max(10)
+  .max(50)
   .step(1)
   .name("sharpness");
+gui
+  .add(material.uniforms.u_patern, "value")
+  .min(1)
+  .max(10)
+  .step(0.1)
+  .name("repitition");
+gui
+  .add(material.uniforms.u_position, "value")
+  .min(-2)
+  .max(4)
+  .step(0.01)
+  .name("position");
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
@@ -94,7 +115,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(0.0, 0, 0);
+camera.position.set(0.25, -0.25, 1);
 scene.add(camera);
 
 // Controls
